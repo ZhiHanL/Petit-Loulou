@@ -1,89 +1,79 @@
-var game;
-var useLandscape = true;
-
 window.onload = function() {
 
   var isMobile = navigator.userAgent.indexOf("Mobile");
   var gameWidth = window.innerWidth * 0.80;
   var gameHeight = window.innerHeight * 0.60;
-  if (isMobile > -1) {
-    isMobile = true;
-  } else {
-    isMobile = false;
-  }
 
-  if (isMobile == false) {
-    //desktop laptop
-    if (useLandscape == true) {
-      game = new Phaser.Game(gameWidth,gameHeight, Phaser.AUTO, "ph_game");
-    } else {
 
-      game = new Phaser.Game(480, 640, Phaser.AUTO, "ph_game");
-    }
+  var game = new Phaser.Game(gameWidth, gameHeight, Phaser.AUTO, "ph_game");
 
-  } else {
-    //mobile device
-    game = new Phaser.Game(gameWidth, gameHeight, Phaser.AUTO, "ph_game");
-  }
+  var seal; //temp image
 
-  var seal;
-  var buttonRight;
-  var buttonLeft;
-  var buttonRightDown = false;
-  var buttonLeftDown = false;
+  //Variables for Scrolling BG
+  var pressedDown = false;
+  var dragging = false;
+  var startX = 0;
+  var bgVelocity = 0;
+  var callbackID = 0;
+  var timestamp = 0;
+  var now = 0;
+
   var StateMain = {
 
     preload: function() {
       game.load.image('test', 'assets/Sebastian.jpg');
-      game.load.image('scrollButton', 'assets/buttons_PNG32.png')
     },
 
     create: function() {
       seal = createSeal(game.world.centerX, game.world.centerY);
-      buttonLeft = game.add.button(gameWidth+100, game.world.centerY, 'scrollButton');
-      buttonLeft.angle = 90;
-      buttonRight = game.add.button(100, game.world.centerY, 'scrollButton');
-      buttonRight.angle = 90;
+      game.input.onDown.add(this.beginMoveBG, this);
+      this.callbackID = this.game.input.addMoveCallback(this.moveBG, this);
+      game.input.onUp.add(this.endMove, this);
 
-      buttonLeft.onInputDown.add(downLeft, this);
-      buttonLeft.onInputUp.add(upLeft, this);
-      buttonRight.onInputDown.add(downRight, this);
-      buttonRight.onInputUp.add(upRight, this);
     },
 
     update: function() {
-        moveBG();
+
     }
   }
 
-  function downLeft() {
-    buttonLeftDown = true;
+  /**
+  * Event triggered when a pointer is pressed down, resets the value of variables.
+  */
+  function beginMoveBG() {
+    //variables for scrolling bg
+    this.pressedDown = true;
+    this.startX = game.input.x;
+    this.bgVelocity = 0;
+    this.timestamp = Date.now();
   }
 
-  function downRight() {
-    buttonRightDown = true;
+  /**
+  * Event triggered when the activePointer receives a DOM move event such as a mousemove or touchmove.
+  * The camera moves according to the movement of the pointer, calculating the velocity.
+  */
+  function moveBG(pointer, x, y) {
+    if(!this.pressedDown) return;
+
+    //calculate time difference
+    this.now = Date.now();
+    var elapsed = this.now - this.timestamp;
+    this.timestamp = this.now();
+
+    var delta = x - this.startX;
+    if (delta !== 0) this.dragging = true;
+    this.startX = x;
+    this.bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * this.velocityX;
+    seal.x -=delta;
   }
 
-  function upLeft() {
-    buttonLeftDown = false;
-  }
+  function endMove(){
 
-  function upRight() {
-    buttonRightDown = false;
-  }
-
-  function moveBG() {
-    if (buttonLeftDown) {
-      seal.x = seal.x - 1;
-    } else if (buttonRightDown) {
-      seal.x = seal.x + 1;
-    }
   }
 
   function createSeal(x, y) {
     var seal = game.add.sprite(x, y, 'test');
     seal.anchor.setTo(0.5, 0.5);
-    //seal.height = gameHeight;
     return seal;
   }
 
