@@ -10,6 +10,7 @@ window.onload = function() {
   var seal; //temp image
 
   //Variables for Scrolling BG
+  var timeConstantScroll = 325;
   var pressedDown = false;
   var dragging = false;
   var startX = 0;
@@ -17,6 +18,8 @@ window.onload = function() {
   var callbackID = 0;
   var timestamp = 0;
   var now = 0;
+  var amplitudeX = 0;
+  var targetX = 0;
 
   var StateMain = {
 
@@ -26,49 +29,64 @@ window.onload = function() {
 
     create: function() {
       seal = createSeal(game.world.centerX, game.world.centerY);
-      game.input.onDown.add(this.beginMoveBG, this);
-      //ssgame.input.addMoveCallback(this.moveBG, this.game);
-      game.input.onUp.add(this.endMove, this);
+      game.input.onDown.add(beginMoveBG, this);
+      callbackID = this.game.input.addMoveCallback(moveBG, this);
+      game.input.onUp.add(endMove, this);
 
     },
 
     update: function() {
-
+        scrollUpdate();
     }
   }
 
   /**
-  * Event triggered when a pointer is pressed down, resets the value of variables.
-  */
+   * Event triggered when a pointer is pressed down, resets the value of variables.
+   */
   function beginMoveBG() {
     //variables for scrolling bg
-    this.pressedDown = true;
-    this.startX = game.input.x;
-    this.bgVelocity = 0;
-    this.timestamp = Date.now();
+    pressedDown = true;
+    startX = game.input.x;
+    bgVelocity = 0;
+    timestamp = Date.now();
+    amplitudeX = 0;;
   }
 
   /**
-  * Event triggered when the activePointer receives a DOM move event such as a mousemove or touchmove.
-  * The camera moves according to the movement of the pointer, calculating the velocity.
-  */
+   * Event triggered when the activePointer receives a DOM move event such as a mousemove or touchmove.
+   * The camera moves according to the movement of the pointer, calculating the velocity.
+   */
   function moveBG(pointer, x, y) {
-    if(!this.pressedDown) return;
-
+    if (!pressedDown) return;
     //calculate time difference
-    this.now = Date.now();
-    var elapsed = this.now - this.timestamp;
-    this.timestamp = this.now();
+    now = Date.now();
+    var elapsed = now - this.timestamp;
+    timestamp = Date.now();
 
-    var delta = x - this.startX;
-    if (delta !== 0) this.dragging = true;
-    this.startX = x;
-    this.bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * this.velocityX;
-    seal.x -=delta;
+    var delta = x - startX;
+    if (delta !== 0) dragging = true;
+    startX = x;
+    bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * bgVelocity;
+    seal.x += delta;
   }
 
-  function endMove(){
+  /**
+  * Event triggered when a pointer is released, calculates the automatic scrolling.
+  */
+  function endMove() {
+    pressedDown = false;
+    now = Date.now();
 
+        amplitudeX = 0.8 * bgVelocity;
+        targetX = Math.round(seal.x + amplitudeX);
+  }
+
+  function scrollUpdate(){
+    elapsed = Date.now() - timestamp;
+    var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
+    if (delta > 0.1 || delta < -0.1) {
+        seal.x = targetX + delta;
+    }
   }
 
   function createSeal(x, y) {
