@@ -10,7 +10,7 @@ window.onload = function() {
   var seal; //temp image
 
   //Variables for Scrolling BG
-  var timeConstantScroll = 325;
+  var timeConstantScroll = 500;
   var pressedDown = false;
   var dragging = false;
   var startX = 0;
@@ -36,7 +36,7 @@ window.onload = function() {
     },
 
     update: function() {
-        scrollUpdate();
+      scrollUpdate();
     }
   }
 
@@ -60,7 +60,7 @@ window.onload = function() {
     if (!pressedDown) return;
     //calculate time difference
     now = Date.now();
-    var elapsed = now - this.timestamp;
+    var elapsed = now - timestamp;
     timestamp = Date.now();
 
     var delta = x - startX;
@@ -68,24 +68,30 @@ window.onload = function() {
     startX = x;
     bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * bgVelocity;
     seal.x += delta;
+
+
   }
 
   /**
-  * Event triggered when a pointer is released, calculates the automatic scrolling.
-  */
-  function endMove() {
-    pressedDown = false;
-    now = Date.now();
+   * Event triggered when a pointer is released, calculates the automatic scrolling.
+   */
 
-        amplitudeX = 0.8 * bgVelocity;
-        targetX = Math.round(seal.x + amplitudeX);
+   function endMove() {
+     pressedDown = false;
+     now = Date.now();
+     if (bgVelocity > 10 || bgVelocity < -10) {
+       amplitudeX = 0.8 * bgVelocity;
+       targetX = Math.round(seal.x + amplitudeX);
+     }
   }
 
-  function scrollUpdate(){
+  function scrollUpdate() {
     elapsed = Date.now() - timestamp;
-    var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
-    if (delta > 0.1 || delta < -0.1) {
+    if (amplitudeX != 0) {
+      var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
+      if (delta > 0.5 || delta < -0.5) {
         seal.x = targetX + delta;
+      }
     }
   }
 
@@ -95,6 +101,9 @@ window.onload = function() {
     return seal;
   }
 
+  function checkBGInBounds(){
+    
+  }
   game.state.add("StateMain", StateMain);
   game.state.start("StateMain");
 }
