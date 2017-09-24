@@ -27,7 +27,7 @@ window.onload = function() {
     create: function() {
       seal = createSeal(game.world.centerX, game.world.centerY);
       game.input.onDown.add(this.beginMoveBG, this);
-      this.callbackID = this.game.input.addMoveCallback(this.moveBG, this);
+      //ssgame.input.addMoveCallback(this.moveBG, this.game);
       game.input.onUp.add(this.endMove, this);
 
     },
