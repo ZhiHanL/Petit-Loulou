@@ -40,20 +40,20 @@ window.onload = function() {
 
     create: function() {
       seal = createSeal(game.world.centerX, game.world.centerY);
-      buttonLeft = game.add.button(gameWidth - 20, game.world.centerY, 'scrollButton');
-      buttonRight = game.add.button(20, game.world.centerY, 'scrollButton');
+      buttonLeft = game.add.button(gameWidth+100, game.world.centerY, 'scrollButton');
+      buttonLeft.angle = 90;
+      buttonRight = game.add.button(100, game.world.centerY, 'scrollButton');
+      buttonRight.angle = 90;
 
       buttonLeft.onInputDown.add(downLeft, this);
       buttonLeft.onInputUp.add(upLeft, this);
       buttonRight.onInputDown.add(downRight, this);
-      buttonRight.onInputup.add(upRight, this);
+      buttonRight.onInputUp.add(upRight, this);
     },
 
     update: function() {
         moveBG();
     }
-
-
   }
 
   function downLeft() {
@@ -62,7 +62,6 @@ window.onload = function() {
 
   function downRight() {
     buttonRightDown = true;
-
   }
 
   function upLeft() {
