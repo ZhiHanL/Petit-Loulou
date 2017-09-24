@@ -27,14 +27,22 @@ window.onload = function() {
   }
 
   var seal;
+  var buttonRight;
+  var buttonLeft;
   var StateMain = {
 
     preload: function() {
       game.load.image('test', 'assets/Sebastian.jpg');
+      game.load.image('scrollButton', 'assets/buttons_PNG32.png')
     },
 
     create: function() {
       seal = createSeal(game.world.centerX, game.world.centerY);
+      buttonLeft = game.add.button(gameWidth-20, game.world.centerY, 'scrollButton');
+      buttonRight = game.add.button(20, game.world.centerY, 'scrollButton');
+
+      buttonLeft.onInputDown.add(downLeft,this);
+      buttonRight.onInputDown.add(downRight,this);
     },
 
     update: function() {
@@ -42,6 +50,14 @@ window.onload = function() {
     }
 
 
+  }
+
+  function downLeft() {
+    seal.x = seal.x - 1;
+  }
+
+  function downRight(){
+    seal.x = seal.x + 1;  
   }
 
   function createSeal(x, y) {
