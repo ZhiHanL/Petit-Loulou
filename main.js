@@ -5,7 +5,7 @@ window.onload = function() {
 
   var isMobile = navigator.userAgent.indexOf("Mobile");
   var gameWidth = window.innerWidth * 0.80;
-  var gameHeight = window.innerHeight * 0.4;
+  var gameHeight = window.innerHeight * 0.60;
   if (isMobile > -1) {
     isMobile = true;
   } else {
@@ -15,7 +15,7 @@ window.onload = function() {
   if (isMobile == false) {
     //desktop laptop
     if (useLandscape == true) {
-      game = new Phaser.Game(window.innerWidth * 0.80, window.innerHeight * 0.6, Phaser.AUTO, "ph_game");
+      game = new Phaser.Game(gameWidth,gameHeight, Phaser.AUTO, "ph_game");
     } else {
 
       game = new Phaser.Game(480, 640, Phaser.AUTO, "ph_game");
@@ -23,7 +23,7 @@ window.onload = function() {
 
   } else {
     //mobile device
-    game = new Phaser.Game(window.innerWidth * 0.80, window.innerHeight * 0.6, Phaser.AUTO, "ph_game");
+    game = new Phaser.Game(gameWidth, gameHeight, Phaser.AUTO, "ph_game");
   }
 
   var seal;
