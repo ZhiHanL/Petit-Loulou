@@ -10,7 +10,7 @@ window.onload = function() {
   var seal; //temp image
 
   //Variables for Scrolling BG
-  var timeConstantScroll = 500;
+  var timeConstantScroll = 325;
   var pressedDown = false;
   var dragging = false;
   var startX = 0;
@@ -28,6 +28,7 @@ window.onload = function() {
     },
 
     create: function() {
+      game.world.setBounds(0, 0, gameWidth+2000, gameHeight);
       seal = createSeal(game.world.centerX, game.world.centerY);
       game.input.onDown.add(beginMoveBG, this);
       callbackID = this.game.input.addMoveCallback(moveBG, this);
@@ -67,9 +68,7 @@ window.onload = function() {
     if (delta !== 0) dragging = true;
     startX = x;
     bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * bgVelocity;
-    seal.x += delta;
-
-
+    game.camera.x -= delta;
   }
 
   /**
@@ -81,7 +80,7 @@ window.onload = function() {
      now = Date.now();
      if (bgVelocity > 10 || bgVelocity < -10) {
        amplitudeX = 0.8 * bgVelocity;
-       targetX = Math.round(seal.x + amplitudeX);
+       targetX = Math.round(game.camera.x - amplitudeX);
      }
   }
 
@@ -90,7 +89,7 @@ window.onload = function() {
     if (amplitudeX != 0) {
       var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
       if (delta > 0.5 || delta < -0.5) {
-        seal.x = targetX + delta;
+        game.camera.x = targetX - delta;
       }
     }
   }
@@ -102,7 +101,7 @@ window.onload = function() {
   }
 
   function checkBGInBounds(){
-    
+
   }
   game.state.add("StateMain", StateMain);
   game.state.start("StateMain");
