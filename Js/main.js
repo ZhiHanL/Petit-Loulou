@@ -13,11 +13,15 @@ window.onload = function() {
 
     preload: function() {
       game.load.image('test', 'assets/Sebastian.jpg');
+      game.load.spritesheet('raccoon', 'assets/raccoon.jpg', 406, 230);
     },
 
     create: function() {
       game.world.setBounds(0, 0, gameWidth+2000, gameHeight);
       seal = createSeal(game.world.centerX, game.world.centerY);
+      raccoon = game.add.sprite(game.world.centerX, game.world.centerY, 'raccoon');
+      addRacoonAnimations();
+      raccoon.animations.play('idle');
       game.input.onDown.add(beginMoveBG, this);
       callbackID = this.game.input.addMoveCallback(moveBG, this);
       game.input.onUp.add(endMove, this);
