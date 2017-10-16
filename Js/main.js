@@ -53,7 +53,7 @@ window.onload = function() {
       }
   }
 
-  if(game.camera.x > worldEndX - 1200){
+  if(game.camera.x > worldEndX - 1500){
     if(bg1.x + 3960*1.25 < worldEndX){
       bg1.x ++;
     }
