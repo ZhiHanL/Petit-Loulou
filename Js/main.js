@@ -38,19 +38,30 @@ window.onload = function() {
     },
 
     update: function() {
-      if(game.camera.x < 15){
-        if(bg1.x > 0){
-          bg1.x --;
-   }
-        if(bg2.x > 0){
-          bg2.x --;
-        }
-    }
-
+        alignBG();
   }
 }
 
 
+  function alignBG(){
+    if(game.camera.x < 15){
+      if(bg1.x > 0){
+        bg1.x --;
+      }
+      if(bg2.x > 0){
+        bg2.x --;
+      }
+  }
+
+  if(game.camera.x > worldEndX - 1200){
+    if(bg1.x + 3960*1.25 < worldEndX){
+      bg1.x ++;
+    }
+    if(bg2.x + 5040*1.25 < worldEndX){
+     bg2.x ++;
+    }
+}
+  }
 
   function createBG(x, y, bg) {
     var bg = game.add.sprite(x, y, bg);
