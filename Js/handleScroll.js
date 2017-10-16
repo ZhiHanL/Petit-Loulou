@@ -9,6 +9,7 @@ var timestamp = 0;
 var now = 0;
 var amplitudeX = 0;
 var targetX = 0;
+var cameraAtEdge = false;
 
 /**
  * Event triggered when a pointer is pressed down, resets the value of variables.
@@ -38,6 +39,12 @@ function moveBG(pointer, x, y) {
   startX = x;
   bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * bgVelocity;
   game.camera.x -= delta;
+
+    if(!game.camera.atLimit.x){
+      //bg4.x += 0.88;
+      bg2.x -= delta*0.18;
+      bg1.x -= delta*0.36;
+    }
 }
 
 /**
@@ -58,7 +65,8 @@ function scrollUpdate() {
   if (amplitudeX != 0) {
     var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
     if (delta > 0.5 || delta < -0.5) {
-      game.camera.x = targetX - delta;
+    //  game.camera.x = targetX - delta;
+
     }
   }
 }
