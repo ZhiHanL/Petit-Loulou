@@ -42,8 +42,8 @@ function moveBG(pointer, x, y) {
 
     if(!game.camera.atLimit.x){
       //bg4.x += 0.88;
-      bg2.x -= delta*0.13;//0.18
-      bg1.x -= delta*0.33;//0.36
+      bg2.x -= delta*0.20;//0.18
+      bg1.x -= delta*0.38;//0.36
     }
 }
 
