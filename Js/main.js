@@ -6,8 +6,9 @@ window.onload = function() {
   var gameWidth = window.innerWidth * 0.80;
   var gameHeight = window.innerHeight * 0.60;
 
+  worldEndX = 7070;
 
-  game = new Phaser.Game(gameWidth, 243, Phaser.AUTO, "ph_game");
+  game = new Phaser.Game(gameWidth, 240, Phaser.AUTO, "ph_game");
 
 
   var StateMain = {
@@ -21,7 +22,7 @@ window.onload = function() {
     },
 
     create: function() {
-      game.world.setBounds(0, 0, 6120, 194);
+      game.world.setBounds(0, 0, worldEndX, 194);
       bg1 = createBG(0,0, "BG1");
       bg2 = createBG(0,0, "BG2");
       bg3 = createBG(0,0,"BG3");
@@ -34,13 +35,20 @@ window.onload = function() {
       game.input.onDown.add(beginMoveBG, this);
       callbackID = this.game.input.addMoveCallback(moveBG, this);
       game.input.onUp.add(endMove, this);
-
     },
 
     update: function() {
-      scrollUpdate();
+      if(game.camera.x < 15){
+        if(bg1.x > 0){
+          bg1.x --;
+   }
+        if(bg2.x > 0){
+          bg2.x --;
+        }
     }
+
   }
+}
 
 
 

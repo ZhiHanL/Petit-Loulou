@@ -53,20 +53,22 @@ function moveBG(pointer, x, y) {
 
  function endMove() {
    pressedDown = false;
-   now = Date.now();
-   if (bgVelocity > 10 || bgVelocity < -10) {
-     amplitudeX = 0.8 * bgVelocity;
-     targetX = Math.round(game.camera.x - amplitudeX);
+
+
    }
-}
+  //  now = Date.now();
+  //  if (bgVelocity > 10 || bgVelocity < -10) {
+  //    amplitudeX = 0.8 * bgVelocity;
+  //    targetX = Math.round(game.camera.x - amplitudeX);
+  //  }
 
-function scrollUpdate() {
-  elapsed = Date.now() - timestamp;
-  if (amplitudeX != 0) {
-    var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
-    if (delta > 0.5 || delta < -0.5) {
-    //  game.camera.x = targetX - delta;
-
-    }
-  }
-}
+// function scrollUpdate() {
+//   elapsed = Date.now() - timestamp;
+//   if (amplitudeX != 0) {
+//     var delta = -amplitudeX * Math.exp(-elapsed / timeConstantScroll);
+//     if (delta > 0.5 || delta < -0.5) {
+//     //  game.camera.x = targetX - delta;
+//
+//     }
+//   }
+// }
