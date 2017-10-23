@@ -44,7 +44,7 @@ window.onload = function() {
 
 
   function alignBG(){
-    if(game.camera.x < 15){
+    if(game.camera.x < 50){
       if(bg1.x > 0){
         bg1.x --;
       }
