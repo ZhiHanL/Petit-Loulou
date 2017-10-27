@@ -39,7 +39,9 @@ function moveBG(pointer, x, y) {
   startX = x;
   bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * bgVelocity;
   game.camera.x -= delta;
-
+  if(delta != 0){
+    animationTriggerBool = false;
+  }
     if(!game.camera.atLimit.x){
       //bg4.x += 0.88;
       bg2.x -= delta*0.18;//0.18
