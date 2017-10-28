@@ -9,7 +9,8 @@ window.onload = function() {
   worldEndX = 7070;
 
   game = new Phaser.Game(gameWidth, 240, Phaser.AUTO, "ph_game");
-
+  inputX = 0;
+  inputY = 0;
 
   var StateMain = {
 
@@ -27,11 +28,19 @@ window.onload = function() {
       bg2 = createBG(0, 0, "BG2");
       bg3 = createBG(0, 0, "BG3");
       //bg4 = createBG(0,0,"BG4");
-      raccoon = game.add.sprite(game.world.centerX + 10, game.world.centerY , 'raccoon');
+      raccoon = game.add.sprite(game.world.centerX + 10, game.world.centerY, 'raccoon');
       raccoon.scale.setTo(0.7,0.7);
       raccoon.inputEnabled = true;
       addRacoonAnimations();
-      raccoon.events.onInputDown.add(rListener, this);
+      raccoon.events.onInputDown.add(function(){
+        inputX = game.input.mousePointer.x;
+        inputY = game.input.mousePointer.y;
+      });
+      raccoon.events.onInputUp.add(function(){
+        if(inputX == game.input.mousePointer.x && inputY == game.input.mousePointer.y){
+            rListener();
+        }
+      });
       rIdleAnim = raccoon.animations.play('rIdle');
 
 
