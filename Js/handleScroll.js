@@ -11,6 +11,10 @@ var amplitudeX = 0;
 var targetX = 0;
 var cameraAtEdge = false;
 
+var cameraTotalMovement = 7703;
+var bg1TotalMovement = 3212.59002;
+var bg2TotalMovement = 1764.23999;
+
 /**
  * Event triggered when a pointer is pressed down, resets the value of variables.
  */
@@ -31,7 +35,7 @@ function moveBG(pointer, x, y) {
   if (!pressedDown) return;
   //calculate time difference
   now = Date.now();
-  var elapsed = now - timestamp;
+ var elapsed = now - timestamp;
   timestamp = Date.now();
 
   var delta = x - startX;
@@ -39,30 +43,25 @@ function moveBG(pointer, x, y) {
   startX = x;
   bgVelocity = 0.8 * (1000 * delta / (1 + elapsed)) + 0.2 * bgVelocity;
   game.camera.x -= delta;
-  if(delta != 0){
-    animationTriggerBool = false;
-  }
-    if(!game.camera.atLimit.x){
-      //bg4.x += 0.88;
-      bg2.x -= delta*(0.22);//0.18
-      bg1.x -= delta*(0.395);//0.36
-    }
+  var percentOfMovement = game.camera.x/cameraTotalMovement;
+  bg1.x = percentOfMovement * bg1TotalMovement;
+  bg2.x = percentOfMovement * bg2TotalMovement;
 }
 
 /**
  * Event triggered when a pointer is released, calculates the automatic scrolling.
  */
 
- function endMove() {
-   pressedDown = false;
+function endMove() {
+  pressedDown = false;
 
 
-   }
-  //  now = Date.now();
-  //  if (bgVelocity > 10 || bgVelocity < -10) {
-  //    amplitudeX = 0.8 * bgVelocity;
-  //    targetX = Math.round(game.camera.x - amplitudeX);
-  //  }
+}
+//  now = Date.now();
+//  if (bgVelocity > 10 || bgVelocity < -10) {
+//    amplitudeX = 0.8 * bgVelocity;
+//    targetX = Math.round(game.camera.x - amplitudeX);
+//  }
 
 // function scrollUpdate() {
 //   elapsed = Date.now() - timestamp;

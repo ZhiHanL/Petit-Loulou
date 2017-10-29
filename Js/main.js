@@ -51,7 +51,7 @@ window.onload = function() {
     },
 
     update: function() {
-      alignBG();
+
     }
   }
 
