@@ -15,14 +15,22 @@ function addRacoonAnimations(){
 function rListener(){
     switch (raccoon.animations.currentAnim.name){
       case 'rIdle':
-        rTriggerStart = true;
-        rIdleAnim.onLoop.addOnce(rFaceAndWalk, this);
+      //  rTriggerStart = true;
+        rFaceAndWalk();
+        //rIdleAnim.onLoop.addOnce(rFaceAndWalk, this);
         break;
       case 'rCIdle':
-        rTriggerEnd = true;
-        rCIdleAnim.onLoop.addOnce(rTurnBackAndWalk, this);
+        //rTriggerEnd = true;
+        rTurnBackAndWalk();
+        //rCIdleAnim.onLoop.addOnce(rTurnBackAndWalk, this);
         break;
     }
+}
+
+function rEnd(){
+  if(raccoon.animations.currentAnim.name == 'rCIdle'){
+    rTurnBackAndWalk();
+  }
 }
 
 function rTurnBackAndWalk(){
@@ -31,7 +39,7 @@ function rTurnBackAndWalk(){
       tempAnim.onLoop.add(function(){
         console.log(tempAnim.loopCount);
 
-        if(tempAnim.loopCount == 3){
+        if(tempAnim.loopCount == 2){
           raccoon.play('rTransitionToOriginal').onComplete.addOnce(function(){
             raccoon.play('rIdle');
           });
@@ -46,7 +54,7 @@ function rFaceAndWalk(){
     rFaceCamAnim.onComplete.addOnce(function(){
       tempAnim = raccoon.play('rWalkTowardsCamera');
       tempAnim.onLoop.add(function(){
-        if(tempAnim.loopCount == 3){
+        if(tempAnim.loopCount == 2){
           rSitAndIdle();
         }
       });
