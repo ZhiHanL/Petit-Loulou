@@ -9,6 +9,7 @@ var StateMain = {
   // },
 
   create: function() {
+      var worldEndX = 6120*1.4;
     game.world.setBounds(0, 0, worldEndX, 194);
     bg1 = createBG(0, 0, "BG1");
     bg2 = createBG(0, 0, "BG2");
@@ -38,25 +39,6 @@ var StateMain = {
 
   update: function() {
 
-  }
-}
-function alignBG() {
-  if (game.camera.x < 50) {
-    if (bg1.x > 0) {
-      bg1.x--;
-    }
-    if (bg2.x > 0) {
-      bg2.x--;
-    }
-  }
-
-  if (game.camera.x > worldEndX - 1500) {
-    if (bg1.x + 3960 * 1.4 < worldEndX) {
-      bg1.x++;
-    }
-    if (bg2.x + 5040 * 1.4 < worldEndX) {
-      bg2.x++;
-    }
   }
 }
 
