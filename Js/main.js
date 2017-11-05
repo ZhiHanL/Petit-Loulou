@@ -1,5 +1,3 @@
-var bg1; //furthest back
-var bg2;
 window.onload = function() {
 
   var isMobile = navigator.userAgent.indexOf("Mobile");
@@ -8,7 +6,12 @@ window.onload = function() {
 
   worldEndX = 6120*1.4;
 
-  game = new Phaser.Game(gameWidth,271, Phaser.AUTO, "ph_game");
+  game = new Phaser.Game(gameWidth,271, Phaser.AUTO, "ph_game", {create : create});
+
+  function create(){
+    game.stage.backgroundColor = 0xffffff;
+  }
+
   inputX = 0;
   inputY = 0;
 
