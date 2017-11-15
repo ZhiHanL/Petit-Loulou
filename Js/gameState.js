@@ -8,7 +8,7 @@ var StateMain = {
     bg2 = createBG(0, 0, "BG2");
     bg3 = createBG(0, 0, "BG3");
 
-    raccoon = new Animal(game.world.centerX +450, game.world.centerY+85, 'raccoon',addRacoonAnimations,  "r", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/collections/monsters", "yetiFamily");
+    raccoon = new Animal(game.world.centerX +450, game.world.centerY+85, 'raccoon',addRacoonAnimations,  "r", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
 
     game.input.onDown.add(beginMoveBG, this);
     callbackID = this.game.input.addMoveCallback(moveBG, this);
