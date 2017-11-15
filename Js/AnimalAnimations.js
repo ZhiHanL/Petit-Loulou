@@ -5,13 +5,13 @@ function Animal (x, y, sprite, addAnimations, id, speechBubble, button, pageLink
   this.sprite = game.add.sprite(x, y, sprite);
   this.id = id;
   this.speechActive = false;
-  this.speechBubble = game.add.sprite(x - 370 , y - 180, speechBubble);
+  this.speechBubble = game.add.sprite(x - 370 ,game.world.centerY - 102, speechBubble);
 
-  this.cartButton = game.add.sprite(x-142, y-111, button);
+  this.cartButton = game.add.sprite(x-142, game.world.centerY-32, button);
   this.cartButton.inputEnabled = false;
   this.cartButton.alpha = 0;
 
-  this.familyButton = game.add.sprite(x-166, y-146, button);
+  this.familyButton = game.add.sprite(x-166, game.world.centerY-70, button);
   this.familyButton.inputEnabled = false;
   this.familyButton.alpha = 0;
 
