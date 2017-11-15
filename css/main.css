@@ -1,0 +1,10 @@
+
+html{
+  min-height: 100%;
+}
+body{
+  background-image:url(bg.png);
+  background-size: cover;
+}
+canvas {    margin: auto;   }
+#ph_game {     top: 42%;     left: 19.5%;     position: fixed;}

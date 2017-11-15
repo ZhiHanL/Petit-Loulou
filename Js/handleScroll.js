@@ -54,8 +54,6 @@ function moveBG(pointer, x, y) {
 
 function endMove() {
   pressedDown = false;
-
-
 }
 //  now = Date.now();
 //  if (bgVelocity > 10 || bgVelocity < -10) {

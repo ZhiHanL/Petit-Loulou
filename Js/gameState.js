@@ -1,12 +1,5 @@
 var StateMain = {
 
-  // preload: function() {
-  //   game.load.image('BG1', 'assets/BG1.png');
-  //   game.load.image('BG2', 'assets/BG2.png');
-  //   game.load.image('BG3', 'assets/BG3.png');
-  //   //game.load.image('BG4', 'assets/BG4.png');
-  //   game.load.spritesheet('raccoon', 'assets/raccoon.png', 406, 228);
-  // },
 
   create: function() {
       var worldEndX = 6120*1.4;
@@ -14,31 +7,20 @@ var StateMain = {
     bg1 = createBG(0, 0, "BG1");
     bg2 = createBG(0, 0, "BG2");
     bg3 = createBG(0, 0, "BG3");
-    //bg4 = createBG(0,0,"BG4");
-    raccoon = game.add.sprite(game.world.centerX +400, game.world.centerY+25, 'raccoon');
-    raccoon.scale.setTo(0.7,0.7);
-    raccoon.inputEnabled = true;
-    addRacoonAnimations();
-    raccoon.events.onInputDown.add(function(){
-      inputX = game.input.mousePointer.x;
-      inputY = game.input.mousePointer.y;
-    });
-    raccoon.events.onInputUp.add(function(){
-      if(inputX == game.input.mousePointer.x && inputY == game.input.mousePointer.y){
-          rListener();
-      }
-    });
-    rIdleAnim = raccoon.animations.play('rIdle');
 
+    raccoon = new Animal(game.world.centerX +450, game.world.centerY+85, 'raccoon',addRacoonAnimations,  "r", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/collections/monsters", "yetiFamily");
 
     game.input.onDown.add(beginMoveBG, this);
-    game.input.onDown.add(rEnd, this);
     callbackID = this.game.input.addMoveCallback(moveBG, this);
     game.input.onUp.add(endMove, this);
+    window.addEventListener('resize', function () {
+      game.scale.setGameSize(window.innerWidth * 0.60, window.innerHeight * 0.40);
+    });
   },
 
   update: function() {
-
+      animalSizeListener(raccoon);
+      activateSpeech(raccoon);
   }
 }
 
