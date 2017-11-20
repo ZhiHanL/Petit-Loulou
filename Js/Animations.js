@@ -11,3 +11,102 @@ function addRacoonAnimations(animal){
   animal.sprite.animations.add('rTransitionToOriginal', [157,158,159,160,161,162,163,164,165,166,167,168,169], 24, false);
 
 }
+
+function addCloudAnimations(animal){
+  let idle1 = [];
+  let trans1 = [];
+  let trans2 = [];
+  let idle2 = [];
+  for(let i = 0; i < 123; i++){
+    idle1.push(i);
+  }
+
+
+  for(let i = 129; i <181; i++){
+    trans1.push(i);
+  }
+
+  for(let i = 181; i < 224; i++){
+    idle2.push(i);
+  }
+
+  for(let i = 224; i < 246; i++){
+    trans2.push(i);
+  }
+  console.log(trans1);
+
+  animal.sprite.animations.add("cloudIdle", idle1, 24, true);
+  animal.sprite.animations.add("cloudFaceCamera", trans1, 24, false);
+  animal.sprite.animations.add('cloudWalkTowardsCamera', [], 24, true);
+  animal.sprite.animations.add('cloudSittingDown', [], 24, false);
+  animal.sprite.animations.add('cloudCIdle', idle2, 24, true);
+  animal.sprite.animations.add("cloudTurnBack", [], 24, false);
+  animal.sprite.animations.add("cloudWalkBack", [], 24, true);
+  animal.sprite.animations.add('cloudTransitionToOriginal', trans2, 24, false);
+}
+
+function addRCloudAnimations(animal){
+  let idle1 = [];
+  let trans1 = [];
+  let trans2 = [];
+  let idle2 = [];
+  for(let i = 0; i < 150; i++){
+    idle1.push(i);
+  }
+
+
+  for(let i = 150; i <168; i++){
+    trans1.push(i);
+  }
+
+  for(let i = 168; i < 260; i++){
+    idle2.push(i);
+  }
+
+  for(let i = 260; i < 264; i++){
+    trans2.push(i);
+  }
+
+
+  animal.sprite.animations.add("rCloudIdle", idle1, 24, true);
+  animal.sprite.animations.add("rCloudFaceCamera", trans1, 24, false);
+  animal.sprite.animations.add('rCloudWalkTowardsCamera', [], 24, true);
+  animal.sprite.animations.add('rCloudSittingDown', [], 24, false);
+  animal.sprite.animations.add('rCloudCIdle', idle2, 24, true);
+  animal.sprite.animations.add("rCloudTurnBack", [], 24, false);
+  animal.sprite.animations.add("rCloudWalkBack", [], 24, true);
+  animal.sprite.animations.add('rCloudTransitionToOriginal', trans2, 24, false);
+}
+
+function addCactusAnimations(animal){
+  let idle1 = [];
+  let trans1 = [];
+  let trans2 = [];
+  let idle2 = [];
+  for(let i = 0; i < 131; i++){
+    idle1.push(i);
+  }
+
+
+  for(let i = 131; i <239; i++){
+    trans1.push(i);
+  }
+
+  for(let i = 239; i < 343; i++){
+    idle2.push(i);
+  }
+
+  for(let i = 343; i < 420; i++){
+    trans2.push(i);
+  }
+  console.log(trans1);
+
+  animal.sprite.animations.add("cactusIdle", idle1, 24, true);
+  animal.sprite.animations.add("cactusFaceCamera", trans1, 24, false);
+  animal.sprite.animations.add('cactusWalkTowardsCamera', [], 24, true);
+  animal.sprite.animations.add('cactusSittingDown', [], 24, false);
+  animal.sprite.animations.add('cactusCIdle', idle2, 24, true);
+  animal.sprite.animations.add("cactusTurnBack", [], 24, false);
+  animal.sprite.animations.add("cactusWalkBack", [], 24, true);
+  animal.sprite.animations.add('cactusTransitionToOriginal', trans2, 24, false);
+}

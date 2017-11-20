@@ -27,7 +27,10 @@ function Animal (x, y, sprite, addAnimations, id, speechBubble, button, pageLink
   this.walkingTowards = false;
   this.walkingWay = false;
   this.sprite.anchor.setTo(0.5,0.5);
-  this.sprite.scale.setTo(0.7,0.7);
+  if(this.id == "r"){
+      this.sprite.scale.setTo(0.7,0.7);
+  }
+
   this.sprite.inputEnabled = true;
   addAnimations(this);
   addListener(this);
@@ -77,10 +80,17 @@ function animationListener(animal){
 
 function animalFaceAndWalk(animal){
     let faceCamAnim = animal.sprite.play(animal.id + 'FaceCamera');
+    console.log("playFaceCamera");
     faceCamAnim.onComplete.addOnce(function(){
-      tempAnim = animal.sprite.play('rWalkTowardsCamera');
+      console.log("faceCamComplete");
+      if(animal.id != "r"){
+        animalSitAndIdle(animal);
+        return;
+      }
+      tempAnim = animal.sprite.play(animal.id + 'WalkTowardsCamera');
       animal.walkingTowards = true;
       tempAnim.onLoop.add(function(){
+        console.log('walkloop');
         if(tempAnim.loopCount == 2){
           animalSitAndIdle(animal);
         }
@@ -89,7 +99,16 @@ function animalFaceAndWalk(animal){
 }
 function animalSitAndIdle(animal){
   animal.walkingTowards = false;
-  animal.sprite.play('rSittingDown').onComplete.addOnce(function(){
+  if(animal.id != "r"){
+    console.log("sitting and idling");
+    cIdleAnim = animal.sprite.play(animal.id + 'CIdle');
+    animal.speechActive = true;
+    animal.cartButton.inputEnabled = true;
+    animal.familyButton.inputEnabled = true;
+    return;
+  }
+  animal.sprite.play(animal.id + 'SittingDown').onComplete.addOnce(function(){
+              console.log("sitting and idling");
     cIdleAnim = animal.sprite.play(animal.id + 'CIdle');
     animal.speechActive = true;
     animal.cartButton.inputEnabled = true;
@@ -101,6 +120,12 @@ function animalTurnBackAndWalk(animal){
     animal.speechActive = false;
     animal.cartButton.inputEnabled = false;
     animal.familyButton.inputEnabled = false;
+    if(animal.id != "r"){
+      animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
+        animal.sprite.play(animal.id + 'Idle');
+      });
+      return;
+    }
     animal.sprite.play(animal.id +'TurnBack').onComplete.addOnce(function(){
       tempAnim = animal.sprite.play(animal.id +'WalkBack');
         animal.walkingAway = true;
@@ -108,7 +133,7 @@ function animalTurnBackAndWalk(animal){
         if(tempAnim.loopCount == 2){
           animal.walkingAway = false;
           animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
-            animal.sprite.play('rIdle');
+            animal.sprite.play(animal.id + 'Idle');
           });
         }
       });
