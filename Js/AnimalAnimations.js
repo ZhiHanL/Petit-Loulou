@@ -16,7 +16,7 @@ function Animal (x, y, sprite, addAnimations, id, speechBubble, button, pageLink
   this.familyButton.alpha = 0;
 
   if(familyImage != null){
-    this.familyImage = game.add.sprite(x+55, y-130, familyImage);
+    this.familyImage = game.add.sprite(x+55, game.world.centerY-50, familyImage);
     this.familyImage.alpha = 0;
     this.familyImageActive = false;
   } else{

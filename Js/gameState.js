@@ -8,10 +8,13 @@ var StateMain = {
     bg2 = createBG(0, 0, "BG2");
     bg3 = createBG(0, 0, "BG3");
 
-    raccoon = new Animal(game.world.centerX +450, game.world.centerY+85, 'raccoon',addRacoonAnimations,  "r", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
-    cloud = new Animal(500, game.world.centerY, "cloud", addCloudAnimations, "cloud", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
-    rCloud = new Animal(1000, game.world.centerY, "rainbowCloud", addRCloudAnimations, "rCloud", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
-    cactus =  new Animal(200, game.world.centerY + 120, "cactus", addCactusAnimations, "cactus", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
+    raccoon = new Animal(game.world.centerX +2600, game.world.centerY+85, 'raccoon',addRacoonAnimations,  "r", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
+    cloud = new Animal(worldEndX -800, game.world.centerY + 50, "cloud", addCloudAnimations, "cloud", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
+    rCloud = new Animal(worldEndX -1200, game.world.centerY + 50, "rainbowCloud", addRCloudAnimations, "rCloud", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
+    cactus =  new Animal(3800, game.world.centerY + 50, "cactus", addCactusAnimations, "cactus", "miloSpeech", "speechButton", "https://petitloulou.com/products/milo-the-raccoon-pillow","https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily");
+    cactus.sprite.scale.setTo(1.2,1.2);
+    cloud.sprite.scale.setTo(1.2,1.2);
+    rCloud.sprite.scale.setTo(1.2,1.2);
     game.input.onDown.add(beginMoveBG, this);
     callbackID = this.game.input.addMoveCallback(moveBG, this);
     game.input.onUp.add(endMove, this);
