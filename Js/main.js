@@ -2,7 +2,8 @@ window.onload = function() {
 
   //var isMobile = navigator.userAgent.indexOf("Mobile");
    gameWidth = window.innerWidth * 0.60;
-   gameHeight = window.innerHeight * 0.40;
+   gameHeight = 271.6;
+   //window.innerHeight * 0.40;
 
   game = new Phaser.Game(gameWidth,gameHeight, Phaser.AUTO, "ph_game", {create : create});
 

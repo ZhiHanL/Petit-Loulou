@@ -1,11 +1,11 @@
-function Animal (x, y, sprite, addAnimations, id, speechBubble, button, pageLink, familyLink, familyImage){
+function Animal (x, y, sprite, id, speechBubble, button, pageLink, familyLink, familyImage, endOfIdle1, endOfTrans1, endOfIdle2, endOfTrans2){
   this.pageLink = pageLink;
   this.familyLink = familyLink;
 
   this.sprite = game.add.sprite(x, y, sprite);
   this.id = id;
   this.speechActive = false;
-  this.speechBubble = game.add.sprite(x - 370 ,game.world.centerY - 102, speechBubble);
+  this.speechBubble = game.add.sprite(x - 400 ,game.world.centerY - 140, speechBubble);
 
   this.cartButton = game.add.sprite(x-142, game.world.centerY-32, button);
   this.cartButton.inputEnabled = false;
@@ -24,23 +24,23 @@ function Animal (x, y, sprite, addAnimations, id, speechBubble, button, pageLink
   }
 
   this.speechBubble.alpha = 0;
-  this.walkingTowards = false;
-  this.walkingWay = false;
   this.sprite.anchor.setTo(0.5,0.5);
-  if(this.id == "r"){
-      this.sprite.scale.setTo(0.7,0.7);
-  }
 
   this.sprite.inputEnabled = true;
-  addAnimations(this);
+
+  addAnimalAnimations(this, id, endOfIdle1, endOfTrans1, endOfIdle2, endOfTrans2);
   addListener(this);
-  this.IdleAnim = this.sprite.animations.play(id + "Idle");
+  this.sprite.animations.play(id + "Idle");
+  this.sprite.animations.paused = true;
 
 }
 
 function addListener(animal){
   animal.familyButton.events.onInputOver.add(function(){
-    animal.familyImageActive = true;
+    if(animal.familyImage != null){
+      animal.familyImageActive = true;
+    }
+
   });
 
   animal.familyButton.events.onInputOut.add(function(){
@@ -79,81 +79,37 @@ function animationListener(animal){
 }
 
 function animalFaceAndWalk(animal){
-    let faceCamAnim = animal.sprite.play(animal.id + 'FaceCamera');
-    console.log("playFaceCamera");
+    let faceCamAnim = animal.sprite.play(animal.id + 'TransitionToIdle2');
     faceCamAnim.onComplete.addOnce(function(){
-      console.log("faceCamComplete");
-      if(animal.id != "r"){
         animalSitAndIdle(animal);
         return;
-      }
-      tempAnim = animal.sprite.play(animal.id + 'WalkTowardsCamera');
-      animal.walkingTowards = true;
-      tempAnim.onLoop.add(function(){
-        console.log('walkloop');
-        if(tempAnim.loopCount == 2){
-          animalSitAndIdle(animal);
-        }
-      });
-    }, this);
+    });
+
 }
+
 function animalSitAndIdle(animal){
-  animal.walkingTowards = false;
-  if(animal.id != "r"){
-    console.log("sitting and idling");
     cIdleAnim = animal.sprite.play(animal.id + 'CIdle');
     animal.speechActive = true;
     animal.cartButton.inputEnabled = true;
     animal.familyButton.inputEnabled = true;
     return;
-  }
-  animal.sprite.play(animal.id + 'SittingDown').onComplete.addOnce(function(){
-              console.log("sitting and idling");
-    cIdleAnim = animal.sprite.play(animal.id + 'CIdle');
-    animal.speechActive = true;
-    animal.cartButton.inputEnabled = true;
-    animal.familyButton.inputEnabled = true;
-  });
+
 }
 
 function animalTurnBackAndWalk(animal){
     animal.speechActive = false;
     animal.cartButton.inputEnabled = false;
     animal.familyButton.inputEnabled = false;
-    if(animal.id != "r"){
-      animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
-        animal.sprite.play(animal.id + 'Idle');
-      });
+    animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
+    animal.sprite.play(animal.id + 'Idle');
       return;
-    }
-    animal.sprite.play(animal.id +'TurnBack').onComplete.addOnce(function(){
-      tempAnim = animal.sprite.play(animal.id +'WalkBack');
-        animal.walkingAway = true;
-      tempAnim.onLoop.add(function(){
-        if(tempAnim.loopCount == 2){
-          animal.walkingAway = false;
-          animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
-            animal.sprite.play(animal.id + 'Idle');
-          });
-        }
-      });
     });
-
 }
 
 
 
-function animalSizeListener(animal){
-  if(animal.walkingTowards){
-      animal.sprite.height = animal.sprite.height + 0.3;
-      animal.sprite.width = animal.sprite.width + 0.3;
-  }else if(animal.walkingAway){
-    animal.sprite.height= animal.sprite.height - 0.3;
-    animal.sprite.width = animal.sprite.width - 0.3;
-  }
-}
 
-function activateSpeech(animal){
+function updateLoop(animal){
   if(animal.speechBubble.alpha < 1 && animal.speechActive){
     animal.speechBubble.alpha += 0.02;
   }
@@ -166,5 +122,12 @@ function activateSpeech(animal){
   }
   if(animal.familyImage.alpha > 0 && !animal.familyImageActive){
       animal.familyImage.alpha -= 0.05;
+  }
+  if(game.camera.x > animal.sprite.x - 850 && game.camera.x < animal.sprite.x + 50){
+      if(animal.sprite.animations.paused){
+          animal.sprite.animations.paused = false;
+      }
+  } else if(!animal.sprite.animations.paused){
+    animal.sprite.animations.paused = true;
   }
 }
