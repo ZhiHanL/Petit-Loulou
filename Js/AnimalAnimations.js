@@ -7,15 +7,15 @@ function Animal (x, y, sprite, id, speechBubble, button, pageLink, familyLink, f
   this.speechActive = false;
   this.speechBubble = game.add.sprite(x - 400 ,game.world.centerY - 140, speechBubble);
 
-  this.cartButton = game.add.sprite(x-142, game.world.centerY-32, button);
+  this.cartButton = game.add.sprite(x-171, game.world.centerY-74, button);
   this.cartButton.inputEnabled = false;
   this.cartButton.alpha = 0;
 
-  this.familyButton = game.add.sprite(x-166, game.world.centerY-70, button);
-  this.familyButton.inputEnabled = false;
-  this.familyButton.alpha = 0;
-
   if(familyImage != null){
+    this.familyButton = game.add.sprite(x-195, game.world.centerY-112, button);
+    this.familyButton.inputEnabled = false;
+    this.familyButton.alpha = 0;
+
     this.familyImage = game.add.sprite(x+55, game.world.centerY-50, familyImage);
     this.familyImage.alpha = 0;
     this.familyImageActive = false;
@@ -34,24 +34,21 @@ function Animal (x, y, sprite, id, speechBubble, button, pageLink, familyLink, f
   this.sprite.animations.paused = true;
 
 }
-
-function addListener(animal){
-  animal.familyButton.events.onInputOver.add(function(){
-    if(animal.familyImage != null){
+function addListener(animal) {
+  if (animal.familyImage != null) {
+    animal.familyButton.events.onInputOver.add(function() {
       animal.familyImageActive = true;
-    }
+    });
+    animal.familyButton.events.onInputOut.add(function() {
+      animal.familyImageActive = false;
+    });
+    animal.familyButton.events.onInputDown.add(function() {
+      animal.familyImageActive = false;
+      window.open(animal.familyLink, "_blank");
+    });
+  }
 
-  });
 
-  animal.familyButton.events.onInputOut.add(function(){
-    animal.familyImageActive = false;
-  });
-
-
-  animal.familyButton.events.onInputDown.add(function(){
-    animal.familyImageActive = false;
-    window.open(animal.familyLink, "_blank");
-  });
 
   animal.cartButton.events.onInputDown.add(function(){
      window.open(animal.pageLink, "_blank");
@@ -70,10 +67,23 @@ function addListener(animal){
 function animationListener(animal){
   switch (animal.sprite.animations.currentAnim.name){
     case animal.id + "Idle":
-      animalFaceAndWalk(animal);
+      if(animal.id == 'mobile'){
+        animal.sprite.play(animal.id + 'CIdle');
+        animal.speechActive = true;
+        animal.cartButton.inputEnabled = true;
+      } else{
+        animalFaceAndWalk(animal);
+      }
       break;
     case animal.id + 'CIdle':
-      animalTurnBackAndWalk(animal);
+    if(animal.id == 'mobile'){
+      animal.sprite.play(animal.id + 'Idle');
+      animal.speechActive = false;
+      animal.cartButton.inputEnabled = false;
+    } else{
+        animalTurnBackAndWalk(animal);
+    }
+
       break;
   }
 }
@@ -91,7 +101,10 @@ function animalSitAndIdle(animal){
     cIdleAnim = animal.sprite.play(animal.id + 'CIdle');
     animal.speechActive = true;
     animal.cartButton.inputEnabled = true;
-    animal.familyButton.inputEnabled = true;
+    if(animal.familyImage != null){
+      animal.familyButton.inputEnabled = true;
+    }
+
     return;
 
 }
@@ -99,7 +112,9 @@ function animalSitAndIdle(animal){
 function animalTurnBackAndWalk(animal){
     animal.speechActive = false;
     animal.cartButton.inputEnabled = false;
-    animal.familyButton.inputEnabled = false;
+    if(animal.familyImage != null){
+      animal.familyButton.inputEnabled = false;
+    }
     animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
     animal.sprite.play(animal.id + 'Idle');
       return;
@@ -117,13 +132,16 @@ function updateLoop(animal){
     animal.speechBubble.alpha -= 0.02;
   }
 
-  if(animal.familyImage.alpha < 1 && animal.familyImageActive){
-      animal.familyImage.alpha += 0.05;
+  if(animal.familyImage != null){
+    if(animal.familyImage.alpha < 1 && animal.familyImageActive){
+        animal.familyImage.alpha += 0.05;
+    }
+    if(animal.familyImage.alpha > 0 && !animal.familyImageActive){
+        animal.familyImage.alpha -= 0.05;
+    }
   }
-  if(animal.familyImage.alpha > 0 && !animal.familyImageActive){
-      animal.familyImage.alpha -= 0.05;
-  }
-  if(game.camera.x > animal.sprite.x - 850 && game.camera.x < animal.sprite.x + 50){
+
+  if(game.camera.x > animal.sprite.x - 850 && game.camera.x < animal.sprite.x + 10){
       if(animal.sprite.animations.paused){
           animal.sprite.animations.paused = false;
       }

@@ -7,6 +7,8 @@ var LoadState = {
     game.load.image('BG1', 'assets/BG1.png');
     game.load.image('BG2', 'assets/BG2.png');
     game.load.image('BG3', 'assets/BG3.png');
+    game.load.spritesheet('soundIcon', 'assets/soundIcon.png', 70, 70, 2);
+    game.load.audio('bgMusic', 'assets/music.ogg');
     //game.load.image('BG4', 'assets/BG4.png');
   //  game.load.spritesheet('raccoon', 'assets/raccoon.png', 398, 220);
     game.load.spritesheet('cactus', 'assets/cactus.png', 481,271);
@@ -22,9 +24,11 @@ var LoadState = {
     game.load.spritesheet('mLBlue', 'assets/mLBlue.png', 481,271,223);
     game.load.spritesheet('owl', 'assets/owl.png', 481,271,327);
     game.load.spritesheet('raccoon', 'assets/raccoon.png', 481,271,384);
+    game.load.spritesheet('mobile', 'assets/mobile.png', 481,271,62);
     game.load.image('miloSpeech', 'assets/miloSpeech.png');
     game.load.image('speechButton', 'assets/speechButton.png');
     game.load.image('yetiFamily', 'assets/yetiFamily.png');
+    game.load.image('bearSpeech', 'assets/bearSpeech.png');
   },
 
   create: function(){
