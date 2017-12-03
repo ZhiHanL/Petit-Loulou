@@ -1,7 +1,9 @@
 window.onload = function() {
 
   //var isMobile = navigator.userAgent.indexOf("Mobile");
-   gameWidth = window.innerWidth * 0.60;
+  // gameWidth = window.innerWidth * 0.60;
+  gameWidth = 865;
+   //console.log(gameWidth);
    gameHeight = 271.6;
    //window.innerHeight * 0.40;
 

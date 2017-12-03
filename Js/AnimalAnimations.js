@@ -1,22 +1,21 @@
-function Animal (x, y, sprite, id, speechBubble, button, pageLink, familyLink, familyImage, endOfIdle1, endOfTrans1, endOfIdle2, endOfTrans2){
+function Animal (x, y, bubbleOffSet, sprite, id, speechBubble, button, pageLink, familyLink, familyImage, endOfIdle1, endOfTrans1, endOfIdle2, endOfTrans2){
   this.pageLink = pageLink;
   this.familyLink = familyLink;
 
   this.sprite = game.add.sprite(x, y, sprite);
   this.id = id;
   this.speechActive = false;
-  this.speechBubble = game.add.sprite(x - 400 ,game.world.centerY - 140, speechBubble);
+  this.speechBubble = game.add.sprite(x - 400 + bubbleOffSet, game.world.centerY - 140, speechBubble);
 
-  this.cartButton = game.add.sprite(x-171, game.world.centerY-74, button);
+  this.cartButton = game.add.sprite(x-162 + bubbleOffSet, game.world.centerY-115, button);
   this.cartButton.inputEnabled = false;
   this.cartButton.alpha = 0;
 
   if(familyImage != null){
-    this.familyButton = game.add.sprite(x-195, game.world.centerY-112, button);
+    this.familyButton = game.add.sprite(x-210+bubbleOffSet, game.world.centerY-120, button);
     this.familyButton.inputEnabled = false;
     this.familyButton.alpha = 0;
-
-    this.familyImage = game.add.sprite(x+55, game.world.centerY-50, familyImage);
+    this.familyImage = game.add.sprite(x+55+bubbleOffSet, game.world.centerY-50, familyImage);
     this.familyImage.alpha = 0;
     this.familyImageActive = false;
   } else{

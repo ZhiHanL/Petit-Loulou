@@ -8,20 +8,22 @@ var StateMain = {
     bg2 = createBG(0, 0, "BG2");
     bg3 = createBG(0, 0, "BG3");
 
-    owl = new Animal(5900, game.world.centerY + 50, 'owl', 'owl', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile/products/baby-musical-owl-mobile', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 56, 258, 290, 327);
-    bear = new Animal(game.world.centerX + 2100, game.world.centerY, 'bear', 'bear', 'bearSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', null, 133, 149, 210, 226);
-    raccoon = new Animal(6800, game.world.centerY + 50, 'raccoon', 'raccoon', 'miloSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 294, 324, 340, 384);
-    rCloud = new Animal(worldEndX - 1200, game.world.centerY + 10, "rainbowCloud", "rCloud", "miloSpeech", "speechButton", "https://petitloulou.com/collections/baby-mobile/products/cloud-baby-mobile-music-box", "https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily", 150, 168, 275, 279);
-    cloud = new Animal(worldEndX - 800, game.world.centerY + 10, "cloud", "cloud", "miloSpeech", "speechButton", "https://petitloulou.com/collections/decorative-pillows/products/cloud-pillow", "https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily", 129, 191, 237, 261);
-    cactus = new Animal(3800, game.world.centerY, "cactus", "cactus", "miloSpeech", "speechButton", "https://petitloulou.com/collections/rattle/products/cali-the-cactus-rattle?variant=29464593548", "https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily", 139, 239, 343, 447);
-    dino = new Animal(4900, game.world.centerY, 'dino', 'dino', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/leo-the-dino-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 71, 133, 207, 227);
-    fish = new Animal(4520, game.world.centerY + 20, 'fish', 'fish', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/melvin-the-fish', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 180, 284, 327, 381);
-    fox = new Animal(5300, game.world.centerY, 'fox', 'fox', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/decorative-pillow-tulka-the-fox-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 168, 232, 252, 284);
-    giraffe = new Animal(4100, game.world.centerY, 'giraffe', 'giraffe', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/rattle/products/rattle-giraffe', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 246, 284, 364, 418);
-    hedgehog = new Animal(5550, game.world.centerY, 'hedgehog', 'hedgehog', 'miloSpeech', 'speechButton', 'https://petitloulou.com/products/custom-hedgehog', 'https://petitloulou.com/pages/monster-photo-gallery', null, 169, 217, 339, 386);
-    mBlue = new Animal(250, game.world.centerY - 10, 'mBlue', 'mBlue', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/copy-of-stuffed-monster-blue-plush-monster-with-hornes-1', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 112, 136, 188, 196);
-    mLBlue = new Animal(600, game.world.centerY + 60, 'mLBlue', 'mLBlue', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 100, 150, 198, 223);
-    mobile = new Animal(worldEndX - 450, game.world.centerY + 20, 'mobile', 'mobile', 'miloSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile', 'https://petitloulou.com/pages/monster-photo-gallery', null, 62, null, null, null);
+    owl = new Animal(5900, game.world.centerY + 50, 50,'owl', 'owl', 'owlSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile/products/baby-musical-owl-mobile', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 56, 258, 290, 327);
+    bear = new Animal(game.world.centerX + 2100, game.world.centerY, 100,'bear', 'bear', 'bearSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', null, 133, 149, 210, 226);
+    raccoon = new Animal(6800, game.world.centerY + 50, 150,'raccoon', 'raccoon', 'raccoonSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 294, 324, 340, 384);
+    rCloud = new Animal(worldEndX - 1200, game.world.centerY + 10,0, "rainbowCloud", "rCloud", "cloudRainSpeech", "speechButton", "https://petitloulou.com/collections/baby-mobile/products/cloud-baby-mobile-music-box", "https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily", 150, 168, 275, 279);
+    cloud = new Animal(worldEndX - 800, game.world.centerY + 10, 0,"cloud", "cloud", "cloudStarsSpeech", "speechButton", "https://petitloulou.com/collections/decorative-pillows/products/cloud-pillow", "https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily", 129, 191, 237, 261);
+    cactus = new Animal(3800, game.world.centerY, 80,"cactus", "cactus", "cactusSpeech", "speechButton", "https://petitloulou.com/collections/rattle/products/cali-the-cactus-rattle?variant=29464593548", "https://petitloulou.com/pages/monster-photo-gallery", "yetiFamily", 139, 239, 343, 447);
+    dino = new Animal(4900, game.world.centerY, 120,'dino', 'dino', 'dinoSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/leo-the-dino-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 71, 133, 207, 227);
+    fish = new Animal(4520, game.world.centerY + 20, 220,'fish', 'fish', 'fishSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/melvin-the-fish', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 180, 284, 327, 381);
+    fox = new Animal(5300, game.world.centerY, -100,'fox', 'fox', 'foxSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/decorative-pillow-tulka-the-fox-pillow', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 168, 232, 252, 284);
+    giraffe = new Animal(4100, game.world.centerY,110,'giraffe', 'giraffe', 'giraffeSpeech', 'speechButton', 'https://petitloulou.com/collections/rattle/products/rattle-giraffe', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 246, 284, 364, 418);
+    hedgehog = new Animal(5550, game.world.centerY, 150,'hedgehog', 'hedgehog', 'hedgehogSpeech', 'speechButton', 'https://petitloulou.com/products/custom-hedgehog', 'https://petitloulou.com/pages/monster-photo-gallery', null, 169, 217, 339, 386);
+    mBlue = new Animal(250, game.world.centerY - 10,100,'mBlue', 'mBlue', 'blueSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/copy-of-stuffed-monster-blue-plush-monster-with-hornes-1', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 112, 136, 188, 196);
+    mLBlue = new Animal(600, game.world.centerY + 60, 0,'mLBlue', 'mLBlue', 'lightBlueSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 100, 150, 198, 223);
+    //gray = new Animal(6000, game.world.centerY + 60, 0,'gray', 'gray', 'graySpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery', 'yetiFamily', 100, 150, 198, 223);
+    mobile = new Animal(worldEndX - 450, game.world.centerY + 20, 0,'mobile', 'mobile', 'mobileSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile', 'https://petitloulou.com/pages/monster-photo-gallery', null, 62, null, null, null);
+
 
     game.input.onDown.add(beginMoveBG, this);
     callbackID = this.game.input.addMoveCallback(moveBG, this);
@@ -62,7 +64,8 @@ function createBG(x, y, bg) {
 function createSound() {
   bgMusic.play();
   bgMusic.loop = true;
-  soundButton = game.add.sprite(20, 20, 'soundIcon');
+  soundButton = game.add.sprite(10, 10, 'soundIcon');
+  soundButton.scale.setTo(0.5, 0.5);
   soundButton.animations.add('soundOff', [0], 24, false);
   soundButton.animations.add('soundOn', [1], 24, false);
   soundButton.play('soundOn');
