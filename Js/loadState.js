@@ -9,8 +9,7 @@ var LoadState = {
     game.load.image('BG3', 'assets/BG3.png');
     game.load.spritesheet('soundIcon', 'assets/soundIcon.png', 70, 70, 2);
     game.load.audio('bgMusic', 'assets/music.ogg');
-    //game.load.image('BG4', 'assets/BG4.png');
-  //  game.load.spritesheet('raccoon', 'assets/raccoon.png', 398, 220);
+
     game.load.spritesheet('cactus', 'assets/cactus.png', 481,271);
     game.load.spritesheet('cloud', 'assets/cloud.png', 481,271, 261);
     game.load.spritesheet('rainbowCloud', 'assets/rainbowCloud.png', 481,271,279 );
@@ -25,11 +24,11 @@ var LoadState = {
     game.load.spritesheet('owl', 'assets/owl.png', 481,271,327);
     game.load.spritesheet('raccoon', 'assets/raccoon.png', 481,271,384);
     game.load.spritesheet('mobile', 'assets/mobile.png', 481,271,62);
-    game.load.spritesheet('gray', 'assets/blackAndWhite.png', 481,271,62);
-    game.load.spritesheet('redOrange', 'assets/redOrange.png', 481,271,185);
-    game.load.spritesheet('yellow', 'assets/yellow.png', 481,271,62);
-    game.load.spritesheet('yeti', 'assets/Yeti.png', 481,271,62);
-    game.load.spritesheet('moon', 'assets/Moon.png', 481,271,225);
+    game.load.spritesheet('gray', 'assets/blackAndWhite.png', 481,271,337);
+    game.load.spritesheet('redOrange', 'assets/redOrange.png', 481,271,113);
+    game.load.spritesheet('yellow', 'assets/yellow.png', 481,271,106);
+    game.load.spritesheet('yeti', 'assets/Yeti.png', 481,271,146);
+    game.load.spritesheet('moon', 'assets/Moon.png', 481,271,224);
     game.load.spritesheet('octo', 'assets/octo.png', 481,271,309);
 
     game.load.image('speechButton', 'assets/speechButton.png');
@@ -49,7 +48,7 @@ var LoadState = {
     game.load.image('hedgehogSpeech', 'assets/Speech_Bubbles/hedgehogSpeech.png');
     game.load.image('lightBlueSpeech', 'assets/Speech_Bubbles/lightblueSpeech.png');
     game.load.image('mobileSpeech', 'assets/Speech_Bubbles/mobileSpeech.png');
-    game.load.image('moonieSpeech', 'assets/Speech_Bubbles/moonieSpeech.png');
+    game.load.image('moonSpeech', 'assets/Speech_Bubbles/moonieSpeech.png');
     game.load.image('octopusSpeech', 'assets/Speech_Bubbles/octopusSpeech.png');
     game.load.image('orangeSpeech', 'assets/Speech_Bubbles/orangeSpeech.png');
     game.load.image('owlSpeech', 'assets/Speech_Bubbles/owlSpeech.png');
