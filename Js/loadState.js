@@ -32,7 +32,6 @@ var LoadState = {
     game.load.spritesheet('octo', 'assets/octo.png', 481,271,309);
 
     game.load.image('speechButton', 'assets/speechButton.png');
-    game.load.image('yetiFamily', 'assets/yetiFamily.png');
 
 
     game.load.image('bearSpeech', 'assets/Speech_Bubbles/bearSpeech.png');

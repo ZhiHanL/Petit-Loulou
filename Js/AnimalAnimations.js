@@ -1,4 +1,4 @@
-function Animal (x, y, bubbleOffSet, sprite, id, speechBubble, button, pageLink, familyLink, familyImage, endOfIdle1, endOfTrans1, endOfIdle2, endOfTrans2){
+function Animal (x, y, bubbleOffSet, sprite, id, speechBubble, button, pageLink, familyLink, endOfIdle1, endOfTrans1, endOfIdle2, endOfTrans2){
   this.pageLink = pageLink;
   this.familyLink = familyLink;
 
@@ -11,15 +11,10 @@ function Animal (x, y, bubbleOffSet, sprite, id, speechBubble, button, pageLink,
   this.cartButton.inputEnabled = false;
   this.cartButton.alpha = 0;
 
-  if(familyImage != null){
+  if(familyLink != null){
     this.familyButton = game.add.sprite(x-210+bubbleOffSet, game.world.centerY-120, button);
     this.familyButton.inputEnabled = false;
     this.familyButton.alpha = 0;
-    this.familyImage = game.add.sprite(x+55+bubbleOffSet, game.world.centerY-50, familyImage);
-    this.familyImage.alpha = 0;
-    this.familyImageActive = false;
-  } else{
-    this.familyImage = null;
   }
 
   this.speechBubble.alpha = 0;
@@ -34,15 +29,8 @@ function Animal (x, y, bubbleOffSet, sprite, id, speechBubble, button, pageLink,
 
 }
 function addListener(animal) {
-  if (animal.familyImage != null) {
-    animal.familyButton.events.onInputOver.add(function() {
-      animal.familyImageActive = true;
-    });
-    animal.familyButton.events.onInputOut.add(function() {
-      animal.familyImageActive = false;
-    });
+  if (animal.familyLink != null) {
     animal.familyButton.events.onInputDown.add(function() {
-      animal.familyImageActive = false;
       window.open(animal.familyLink, "_blank");
     });
   }
@@ -100,7 +88,7 @@ function animalSitAndIdle(animal){
     cIdleAnim = animal.sprite.play(animal.id + 'CIdle');
     animal.speechActive = true;
     animal.cartButton.inputEnabled = true;
-    if(animal.familyImage != null){
+    if(animal.familyLink != null){
       animal.familyButton.inputEnabled = true;
     }
 
@@ -111,7 +99,7 @@ function animalSitAndIdle(animal){
 function animalTurnBackAndWalk(animal){
     animal.speechActive = false;
     animal.cartButton.inputEnabled = false;
-    if(animal.familyImage != null){
+    if(animal.familyLink != null){
       animal.familyButton.inputEnabled = false;
     }
     animal.sprite.play(animal.id +'TransitionToOriginal').onComplete.addOnce(function(){
@@ -131,14 +119,6 @@ function updateLoop(animal){
     animal.speechBubble.alpha -= 0.02;
   }
 
-  if(animal.familyImage != null){
-    if(animal.familyImage.alpha < 1 && animal.familyImageActive){
-        animal.familyImage.alpha += 0.05;
-    }
-    if(animal.familyImage.alpha > 0 && !animal.familyImageActive){
-        animal.familyImage.alpha -= 0.05;
-    }
-  }
 
   if(game.camera.x > animal.sprite.x - 850 && game.camera.x < animal.sprite.x + 10){
       if(animal.sprite.animations.paused){
