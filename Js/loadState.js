@@ -8,7 +8,7 @@ var LoadState = {
     game.load.image('BG2', 'assets/BG2.png');
     game.load.image('BG3', 'assets/BG3.png');
     game.load.spritesheet('soundIcon', 'assets/soundIcon.png', 70, 70, 2);
-    game.load.audio('bgMusic', 'assets/music.ogg');
+    game.load.audio('bgMusic', 'assets/music.mp3');
 
     game.load.spritesheet('cactus', 'assets/cactus.png', 481,271);
     game.load.spritesheet('cloud', 'assets/cloud.png', 481,271, 261);
