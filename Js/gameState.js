@@ -22,10 +22,11 @@ var StateMain = {
     fox = new Animal(4790, game.world.centerY + 30, - 30,'fox', 'fox', 'foxSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/decorative-pillow-tulka-the-fox-pillow',null,   168, 232, 252, 284);
     fox.sprite.scale.setTo(0.7, 0.7);
     hedgehog = new Animal(5160, game.world.centerY, 150,'hedgehog', 'hedgehog', 'hedgehogSpeech', 'speechButton', 'https://petitloulou.com/products/custom-hedgehog', null, 169, 217, 339, 386);
+    hedgehog.sprite.scale.setTo(0.8, 0.8);
     owl = new Animal(5600, game.world.centerY, 50,'owl', 'owl', 'owlSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile/products/baby-musical-owl-mobile', null,   56, 258, 290, 309);
     yeti = new Animal(6100, game.world.centerY + 20, 0,'yeti', 'yeti', 'yetiSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters', 'https://petitloulou.com/pages/monster-photo-gallery',   56 , 61, 139, 147);
     bear = new Animal(6400, game.world.centerY + 10, 100,'bear', 'bear', 'bearSpeech', 'speechButton', 'https://petitloulou.com/',  null, 133, 156, 207, 226);
-    raccoon = new Animal(6800, game.world.centerY + 50, 150,'raccoon', 'raccoon', 'raccoonSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', null,  294, 324, 340, 383);
+    raccoon = new Animal(6780, game.world.centerY + 20, 150,'raccoon', 'raccoon', 'raccoonSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', null,  294, 324, 340, 383);
     rCloud = new Animal(worldEndX - 1200, game.world.centerY + 10,0, "rainbowCloud", "rCloud", "cloudRainSpeech", "speechButton", "https://petitloulou.com/collections/baby-mobile/products/cloud-baby-mobile-music-box", null, 150, 168, 275, 279);
     mobile = new Animal(worldEndX - 800, game.world.centerY + 20, 0,'mobile', 'mobile', 'mobileSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile', null, null, 62, null, null, null);
     cloud = new Animal(worldEndX - 450, game.world.centerY + 10, 0,"cloud", "cloud", "cloudStarsSpeech", "speechButton", "https://petitloulou.com/collections/decorative-pillows/products/cloud-pillow", null, 129, 191, 237, 261);
