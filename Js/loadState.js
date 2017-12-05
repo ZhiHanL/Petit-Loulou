@@ -21,7 +21,7 @@ var LoadState = {
     game.load.spritesheet('hedgehog', 'assets/hedgehog.png', 481,271,386);
     game.load.spritesheet('mBlue', 'assets/mBlue.png', 481,271,196);
     game.load.spritesheet('mLBlue', 'assets/mLBlue.png', 481,271,223);
-    game.load.spritesheet('owl', 'assets/owl.png', 481,271,327);
+    game.load.spritesheet('owl', 'assets/owl.png', 481,271,309);
     game.load.spritesheet('raccoon', 'assets/raccoon.png', 481,271,384);
     game.load.spritesheet('mobile', 'assets/mobile.png', 481,271,62);
     game.load.spritesheet('gray', 'assets/blackAndWhite.png', 481,271,337);
