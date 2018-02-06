@@ -42,13 +42,13 @@ var StateMain = {
   },
   update: function() {
 
-    //updateLoop(octo);
+    updateLoop(octo);
     updateLoop(gray);
-    //updateLoop(moon);
-  //  updateLoop(orange);
-  //  updateLoop(yellow);
+    updateLoop(moon);
+    updateLoop(orange);
+    updateLoop(yellow);
     updateLoop(yeti);
-  //  updateLoop(mobile);
+    updateLoop(mobile);
     updateLoop(fox);
     updateLoop(cloud);
     updateLoop(rCloud);
@@ -56,12 +56,12 @@ var StateMain = {
     updateLoop(bear);
     updateLoop(fish);
     updateLoop(dino);
-  //  updateLoop(giraffe);
+    updateLoop(giraffe);
     updateLoop(hedgehog);
     updateLoop(mBlue);
-    //updateLoop(mLBlue);
-    //updateLoop(owl);
-  //  updateLoop(raccoon);
+    updateLoop(mLBlue);
+    updateLoop(owl);
+    updateLoop(raccoon);
   }
 }
 
