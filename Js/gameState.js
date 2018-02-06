@@ -9,8 +9,8 @@ var StateMain = {
     bg3 = createBG(0, 0, "BG3");
 
 
-    //mBlue = new Animal(250, game.world.centerY - 10,100,'mBlue', 'mBlue', 'blueSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/copy-of-stuffed-monster-blue-plush-monster-with-hornes-1', 'https://petitloulou.com/pages/monster-photo-gallery',   112, 136, 188, 196);
-  mLBlue = new Animal(600, game.world.centerY + 60, 0,'mLBlue', 'mLBlue', 'lightBlueSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery',   100, 150, 198, 223);
+    mBlue = new Animal(250, game.world.centerY - 10,100,'mBlue', 'mBlue', 'blueSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/copy-of-stuffed-monster-blue-plush-monster-with-hornes-1', 'https://petitloulou.com/pages/monster-photo-gallery',   112, 136, 188, 196);
+  //  mLBlue = new Animal(600, game.world.centerY + 60, 0,'mLBlue', 'mLBlue', 'lightBlueSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery',   100, 150, 198, 223);
     //yellow = new Animal(860, game.world.centerY + 10, 0,'yellow', 'yellow', 'yellowSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery',   64, 68, 105, 107);
   //  orange = new Animal(1400, game.world.centerY - 20, 0,'redOrange', 'redOrange', 'redOrangeSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery',   68 , 82, 94, 114);
     gray = new Animal(1800, game.world.centerY +20, 0,'gray', 'gray', 'graySpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery',   132, 204, 312, 338);
@@ -58,8 +58,8 @@ var StateMain = {
     updateLoop(dino);
   //  updateLoop(giraffe);
     updateLoop(hedgehog);
-    //updateLoop(mBlue);
-    updateLoop(mLBlue);
+    updateLoop(mBlue);
+    //updateLoop(mLBlue);
     //updateLoop(owl);
   //  updateLoop(raccoon);
   }
