@@ -16,14 +16,14 @@ var StateMain = {
     gray = new Animal(1800, game.world.centerY +20, 0,'gray', 'gray', 'graySpeech', 'speechButton', 'https://petitloulou.com/collections/monsters/products/make-your-own-monster-a-diy-plush-monster-kit-green', 'https://petitloulou.com/pages/monster-photo-gallery',   132, 204, 312, 338);
     dino = new Animal(2200, game.world.centerY, 120,'dino', 'dino', 'dinoSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/leo-the-dino-pillow', null,   71, 133, 207, 227);
   //  octo = new Animal(2950, game.world.centerY, 0,'octo', 'octo', 'octopusSpeech', 'speechButton', 'https://petitloulou.com/', null,   235 , 263, 285, 309);
-  //  cactus = new Animal(3500, game.world.centerY, 80,"cactus", "cactus", "cactusSpeech", "speechButton", "https://petitloulou.com/collections/rattle/products/cali-the-cactus-rattle?variant=29464593548", null, 139, 239, 343, 447);
+ cactus = new Animal(3500, game.world.centerY, 80,"cactus", "cactus", "cactusSpeech", "speechButton", "https://petitloulou.com/collections/rattle/products/cali-the-cactus-rattle?variant=29464593548", null, 139, 239, 343, 447);
     giraffe = new Animal(4000, game.world.centerY,55,'giraffe', 'giraffe', 'giraffeSpeech', 'speechButton', 'https://petitloulou.com/collections/rattle/products/rattle-giraffe', null,   246, 284, 364, 418);
     fish = new Animal(4520, game.world.centerY + 20, 220,'fish', 'fish', 'fishSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/melvin-the-fish', null,   180, 284, 327, 381);
     fox = new Animal(4790, game.world.centerY + 30, - 30,'fox', 'fox', 'foxSpeech', 'speechButton', 'https://petitloulou.com/collections/stuffed-animals/products/decorative-pillow-tulka-the-fox-pillow',null,   168, 232, 252, 284);
     fox.sprite.scale.setTo(0.7, 0.7);
   //  hedgehog = new Animal(5160, game.world.centerY, 150,'hedgehog', 'hedgehog', 'hedgehogSpeech', 'speechButton', 'https://petitloulou.com/products/custom-hedgehog', null, 169, 217, 339, 386);
   //  hedgehog.sprite.scale.setTo(0.8, 0.8);
-    owl = new Animal(5600, game.world.centerY, 50,'owl', 'owl', 'owlSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile/products/baby-musical-owl-mobile', null,   56, 258, 290, 309);
+//    owl = new Animal(5600, game.world.centerY, 50,'owl', 'owl', 'owlSpeech', 'speechButton', 'https://petitloulou.com/collections/baby-mobile/products/baby-musical-owl-mobile', null,   56, 258, 290, 309);
     yeti = new Animal(6100, game.world.centerY + 20, 0,'yeti', 'yeti', 'yetiSpeech', 'speechButton', 'https://petitloulou.com/collections/monsters', 'https://petitloulou.com/pages/monster-photo-gallery',   56 , 61, 139, 147);
     bear = new Animal(6400, game.world.centerY + 10, 100,'bear', 'bear', 'bearSpeech', 'speechButton', 'https://petitloulou.com/',  null, 133, 156, 207, 226);
 //    raccoon = new Animal(6780, game.world.centerY + 20, 150,'raccoon', 'raccoon', 'raccoonSpeech', 'speechButton', 'https://petitloulou.com/products/milo-the-raccoon-pillow', null,  294, 324, 340, 383);
@@ -52,7 +52,7 @@ var StateMain = {
     updateLoop(fox);
     updateLoop(cloud);
     updateLoop(rCloud);
-//    updateLoop(cactus);
+  updateLoop(cactus);
     updateLoop(bear);
     updateLoop(fish);
     updateLoop(dino);
@@ -60,7 +60,7 @@ var StateMain = {
   //  updateLoop(hedgehog);
 //    updateLoop(mBlue);
     updateLoop(mLBlue);
-    updateLoop(owl);
+  //  updateLoop(owl);
 //    updateLoop(raccoon);
   }
 }
